@@ -1,6 +1,6 @@
 # TITAN STORE
 
-**TITAN STORE** is a professional, cross-platform App Store and Launcher built with **C++17** and **Qt6**. It features a modern **Liquid Glass UI** (powered by Chromium/WebEngine) that offers a high-end desktop experience with real-time blur and transparency effects.
+**TITAN STORE** is a professional, cross-platform App Store and Launcher built with **C++17** and **Qt6**. It features a modern **Glass UI** (powered by Chromium/WebEngine) that offers a high-end desktop experience with real-time blur and transparency effects.
 
 TITAN STORE is designed to be a decentralized application hub. You can add your own JSON repositories, and the store will handle isolated installations and version tracking across multiple operating systems.
 
@@ -16,7 +16,7 @@ TITAN STORE is designed to be a decentralized application hub. You can add your 
 
 ## Features
 
-- **Liquid Glass UI**: Ultra-modern interface with background blur (glassmorphism).
+- **Glass UI**: Ultra-modern interface with background blur (glassmorphism).
 - **Multi-Repo Management**: Manage and merge multiple app sources (JSON) in one place.
 - **Isolated Sandbox**: Apps are installed in individual sub-folders to keep your system clean.
 - **Version Control**: Built-in logic to detect updates based on manifest IDs and versions.
