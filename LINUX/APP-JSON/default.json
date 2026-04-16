@@ -1,0 +1,16 @@
+[
+  {
+    "id": "com.titan.testapp",
+    "version": "1.0.0",
+    "title": "TITAN Test App",
+    "description": "This is a real test. Clicking install will download a shell script from the internet and execute it in an isolated folder.",
+    "icon": "",
+    "download_url": "https://tiwut.org/tl/linux/library/urls/test_install.sh",
+    "developer": "Titan Devs",
+    "copyright": "© 2026 Titan",
+    "size": "5 MB",
+    "screenshots": [
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ]
+  }
+]
