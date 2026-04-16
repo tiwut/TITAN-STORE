@@ -6,7 +6,7 @@ TITAN STORE is designed to be a decentralized application hub. You can add your 
 
 ---
 
-## 💻 Supported Platforms
+## Supported Platforms
 
 - **Linux**: Fully native (tested on Ubuntu/Debian/Arch). Uses `.sh` scripts for deployment.
 - **Windows**: Native Win32/MSVC support. (Extendable to `.bat` or `.ps1` scripts).
