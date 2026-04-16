@@ -21,3 +21,13 @@ TITAN STORE is designed to be a decentralized application hub. You can add your 
 - **Isolated Sandbox**: Apps are installed in individual sub-folders to keep your system clean.
 - **Version Control**: Built-in logic to detect updates based on manifest IDs and versions.
 - **Customizable Environment**: Change your installation paths and sources on the fly.
+- 
+---
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0**.  
+See the [LICENSE](LICENSE) file for the full text.
+
+---
+**TITAN STORE - The Decentralized Software Hub. - A Tiwut Project**
