@@ -45,7 +45,7 @@ void StoreWindow::fetchStoreUrls() {
 
     allStoreApps.clear();
     if (urls.isEmpty()) {
-        urls.append("https://raw.githubusercontent.com/deinName/store/main/store.json");
+        urls.append("https://raw.githubusercontent.com/tiwut/TITAN-STORE/refs/heads/main/MAC/APP-JSON/default.json");
     }
 
     pendingRequests = urls.size();

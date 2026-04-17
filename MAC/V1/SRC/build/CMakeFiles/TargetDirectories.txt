@@ -1,5 +1,0 @@
-/home/tiwut/Documents/Dev/titan.store/build/CMakeFiles/TitanStore.dir
-/home/tiwut/Documents/Dev/titan.store/build/CMakeFiles/edit_cache.dir
-/home/tiwut/Documents/Dev/titan.store/build/CMakeFiles/rebuild_cache.dir
-/home/tiwut/Documents/Dev/titan.store/build/CMakeFiles/TitanStore_autogen_timestamp_deps.dir
-/home/tiwut/Documents/Dev/titan.store/build/CMakeFiles/TitanStore_autogen.dir
