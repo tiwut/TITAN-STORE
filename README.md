@@ -10,7 +10,7 @@ TITAN STORE is designed to be a decentralized application hub. You can add your 
 
 - **Linux**: Fully native (tested on Ubuntu/Debian/Arch). Uses `.sh` scripts for deployment.
 - **Windows**: Native Win32/MSVC support. (Extendable to `.bat` or `.ps1` scripts).
-- **macOS**: Native Cocoa/Aqua support. Uses `.sh` (Zsh/Bash) for deployment.
+- **macOS**: Native Cocoa/Aqua support. Uses `.dmg` files.
 
 ---
 
