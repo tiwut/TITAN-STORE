@@ -170,7 +170,7 @@ void StoreWindow::installApp(QString appId) {
                 file.close();
 
                 QProcess* process = new QProcess(this);
-                connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, appToInstall](int exitCode) {
+                connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), [this, appToInstall, process](int exitCode) {
                     if (exitCode == 0) {
                         saveLocalManifest(appToInstall);
                         QMessageBox::information(this, "100% TITAN STORE", 

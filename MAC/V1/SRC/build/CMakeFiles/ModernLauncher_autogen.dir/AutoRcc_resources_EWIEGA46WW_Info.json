@@ -1,0 +1,26 @@
+{
+	"BUILD_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/ModernLauncher_autogen",
+	"CMAKE_BINARY_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC",
+	"CMAKE_SOURCE_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC",
+	"CROSS_CONFIG" : false,
+	"GENERATOR" : "Unix Makefiles",
+	"INCLUDE_DIR" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/ModernLauncher_autogen/include",
+	"INPUTS" : 
+	[
+		"/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/background.png",
+		"/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/index.html"
+	],
+	"LOCK_FILE" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/ModernLauncher_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/opt/homebrew/opt/qt/share/qt/libexec/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/ModernLauncher_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/resources.qrc",
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

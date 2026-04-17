@@ -1,0 +1,5 @@
+/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/ModernLauncher.dir
+/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/edit_cache.dir
+/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/rebuild_cache.dir
+/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/ModernLauncher_autogen_timestamp_deps.dir
+/Users/tiwut/Documents/GitHub/TITAN-STORE/MAC/V1/SRC/build/CMakeFiles/ModernLauncher_autogen.dir

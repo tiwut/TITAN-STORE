@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+225a01c64c89c48304053ba7ce642f71 CMakeFiles/ModernLauncher_autogen
+3bbb9a9894efad58a9d5ab09b248c917 ModernLauncher_autogen/EWIEGA46WW/qrc_resources.cpp
+e90b1dfe68c44a7d5a5fa2cee5b8c288 ModernLauncher_autogen/timestamp
