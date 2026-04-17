@@ -5,7 +5,7 @@
     "title": "TITAN Test App",
     "description": "This is a real test. Clicking install will download a shell script from the internet and execute it in an isolated folder.",
     "icon": "",
-    "download_url": "https://tiwut.org/tl/mac/library/urls/test_install.dmg",
+    "download_url": "https://tiwut.org/tl/mac/library/urls/1.dmg",
     "developer": "Titan Devs",
     "copyright": "© 2026 Titan",
     "size": "5 MB",
