@@ -2,9 +2,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QInputDialog>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QLineEdit>
 #include <QMessageBox>
 #include <QNetworkReply>
 #include <QProcess>
@@ -130,7 +132,7 @@ void StoreWindow::onJsonDownloaded(QNetworkReply *reply) {
         for (const QJsonValue &screen : obj["screenshots"].toArray()) {
           app.screenshots.append(screen.toString());
         }
-        allStoreApps.append(app);
+        allStoreApps.insert(app.id, app);
       }
     }
   }
@@ -149,20 +151,38 @@ void StoreWindow::sendDataToHtml() {
     obj["title"] = app.title;
     obj["developer"] = app.developer;
     obj["icon"] = app.iconUrl;
-    
     QJsonArray categories;
     for (const QString &c : app.categories) categories.append(c);
     obj["categories"] = categories;
-    
     QJsonArray permissions;
     for (const QString &p : app.permissions) permissions.append(p);
     obj["permissions"] = permissions;
-    
     QJsonArray screens;
-    for (const QString &s : app.screenshots)
-      screens.append(s);
+    for (const QString &s : app.screenshots) screens.append(s);
     obj["screenshots"] = screens;
+    obj["orphaned"] = false;
     appsArray.append(obj);
+  }
+
+  // Include installed apps whose repository was removed ("orphaned").
+  // These use the full metadata cached in their local manifest.json.
+  for (const AppManifest &app : installedApps) {
+    if (!allStoreApps.contains(app.id)) {
+      QJsonObject obj;
+      obj["id"]          = app.id;
+      obj["title"]       = app.title.isEmpty() ? app.id : app.title;
+      obj["developer"]   = app.developer.isEmpty() ? tr("(Repository removed)") : app.developer;
+      obj["icon"]        = app.iconUrl;
+      QJsonArray cats, perms, screens;
+      for (const QString &c : app.categories)  cats.append(c);
+      for (const QString &p : app.permissions) perms.append(p);
+      for (const QString &s : app.screenshots) screens.append(s);
+      obj["categories"]  = cats;
+      obj["permissions"] = perms;
+      obj["screenshots"] = screens;
+      obj["orphaned"]    = true;
+      appsArray.append(obj);
+    }
   }
 
   QString appsJson = QJsonDocument(appsArray).toJson(QJsonDocument::Compact);
@@ -177,12 +197,21 @@ void StoreWindow::sendDataToHtml() {
   webView->page()->runJavaScript(script);
 }
 
+
 void StoreWindow::handleWebAction(QString action, QString payload) {
   if (action == "details") {
     AppManifest selectedApp;
-    for (const auto &a : allStoreApps)
-      if (a.id == payload)
-        selectedApp = a;
+    bool isOrphaned = false;
+    if (allStoreApps.contains(payload)) {
+      selectedApp = allStoreApps.value(payload);
+    } else if (installedApps.contains(payload)) {
+      // Orphaned app: use full metadata cached in local manifest.json
+      selectedApp = installedApps.value(payload);
+      if (selectedApp.title.isEmpty()) selectedApp.title = selectedApp.id;
+      if (selectedApp.description.isEmpty())
+        selectedApp.description = tr("This app is installed on your system but its source repository is no longer active. You can still launch or uninstall it.");
+      isOrphaned = true;
+    }
 
     QJsonObject obj;
     obj["id"] = selectedApp.id;
@@ -193,6 +222,7 @@ void StoreWindow::handleWebAction(QString action, QString payload) {
     obj["copyright"] = selectedApp.copyright;
     obj["size"] = selectedApp.size;
     obj["icon"] = selectedApp.iconUrl;
+    obj["orphaned"] = isOrphaned;
     
     QJsonArray categories;
     for (const QString &c : selectedApp.categories) categories.append(c);
@@ -213,6 +243,7 @@ void StoreWindow::handleWebAction(QString action, QString payload) {
     QString script = QString("showAppDetails(%1, %2);")
                          .arg(appJson, isInst ? "true" : "false");
     webView->page()->runJavaScript(script);
+
   } else if (action == "install") {
     QJsonDocument doc = QJsonDocument::fromJson(payload.toUtf8());
     if (doc.isObject()) {
@@ -223,7 +254,11 @@ void StoreWindow::handleWebAction(QString action, QString payload) {
     }
   } else if (action == "uninstall") {
     uninstallApp(payload);
-  } else if (action == "saveSettings") {
+  } else if (action == "launch") {
+    launchApp(payload);
+  } else if (action == "installdep") {
+    installDependency(payload);
+  } else if (action == "savesettings") {
     QJsonDocument doc = QJsonDocument::fromJson(payload.toUtf8());
     QJsonObject obj = doc.object();
 
@@ -259,9 +294,10 @@ void StoreWindow::installApp(QString appId, QString targetPath) {
     return;
 
   AppManifest appToInstall;
-  for (const auto &a : allStoreApps)
-    if (a.id == appId)
-      appToInstall = a;
+  if (allStoreApps.contains(appId)) {
+    appToInstall = allStoreApps.value(appId);
+  }
+  
   if (appToInstall.id.isEmpty() || appToInstall.downloadUrl.isEmpty()) {
     QMessageBox::warning(this, "Error",
                          "No valid Download URL found in manifest.");
@@ -378,8 +414,51 @@ void StoreWindow::uninstallApp(QString appId) {
   QFile::remove(desktopPath);
 
   installedApps.remove(appId);
+  saveInstalledIndex();
   webView->page()->runJavaScript(QString("appUninstalled('%1');").arg(appId));
   sendDataToHtml();
+}
+
+void StoreWindow::launchApp(QString appId) {
+  if (!installedApps.contains(appId))
+    return;
+
+  AppManifest app = installedApps.value(appId);
+  QString installDir = getAppInstallDir(appId);
+  QString execPath = installDir + "/" + app.executable;
+
+  QString program;
+  QStringList arguments;
+
+  if (app.executable.endsWith(".jar")) {
+    program = "java";
+    arguments << "-jar" << app.executable;
+  } else if (app.executable.endsWith(".py")) {
+    program = "python3";
+    arguments << app.executable;
+  } else if (app.executable.endsWith(".sh")) {
+    program = "bash";
+    arguments << app.executable;
+  } else if (app.executable.endsWith(".AppImage")) {
+    program = execPath;
+    
+    QProcess check;
+    check.start("sh", QStringList() << "-c" << "ldconfig -p | grep libfuse.so.2");
+    check.waitForFinished();
+    if (check.readAll().isEmpty()) {
+      webView->page()->runJavaScript(QString("promptMissingDependency('fuse', '%1');").arg(appId));
+      return;
+    }
+  } else {
+    program = execPath;
+  }
+
+  // Ensure the file is executable
+  QFile::setPermissions(execPath, QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner |
+                                  QFile::ReadGroup | QFile::ExeGroup |
+                                  QFile::ReadOther | QFile::ExeOther);
+
+  QProcess::startDetached(program, arguments, installDir);
 }
 
 QString StoreWindow::getAppInstallDir(const QString &appId) {
@@ -413,16 +492,30 @@ void StoreWindow::loadLocalManifests() {
         QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
         QJsonObject obj = doc.object();
         AppManifest app;
-        app.id = obj["id"].toString();
-        app.version = obj["version"].toString();
-        app.executable = obj["executable"].toString();
-        if (app.executable.isEmpty()) {
-            app.executable = app.id;
-        }
+        app.id          = obj["id"].toString();
+        app.version     = obj["version"].toString();
+        app.executable  = obj["executable"].toString();
+        app.title       = obj["title"].toString();
+        app.developer   = obj["developer"].toString();
+        app.description = obj["description"].toString();
+        app.iconUrl     = obj["icon"].toString();
+        app.copyright   = obj["copyright"].toString();
+        app.size        = obj["size"].toString();
+        for (const QJsonValue &c : obj["categories"].toArray())
+          app.categories.append(c.toString());
+        for (const QJsonValue &p : obj["permissions"].toArray())
+          app.permissions.append(p.toString());
+        for (const QJsonValue &s : obj["screenshots"].toArray())
+          app.screenshots.append(s.toString());
+        if (app.executable.isEmpty())
+          app.executable = app.id;
         installedApps.insert(app.id, app);
       }
     }
   }
+
+  // After scanning, write/refresh the central installed.json index
+  saveInstalledIndex();
 }
 
 void StoreWindow::saveLocalManifest(const AppManifest &app) {
@@ -430,11 +523,86 @@ void StoreWindow::saveLocalManifest(const AppManifest &app) {
   QFile file(installDir + "/manifest.json");
   if (file.open(QIODevice::WriteOnly)) {
     QJsonObject obj;
-    obj["id"] = app.id;
-    obj["version"] = app.version;
-    obj["executable"] = app.executable;
-    QJsonDocument doc(obj);
-    file.write(doc.toJson());
+    // Core fields
+    obj["id"]          = app.id;
+    obj["version"]     = app.version;
+    obj["executable"]  = app.executable;
+    // Cached repository metadata for offline/orphaned display
+    obj["title"]       = app.title;
+    obj["developer"]   = app.developer;
+    obj["description"] = app.description;
+    obj["icon"]        = app.iconUrl;
+    obj["copyright"]   = app.copyright;
+    obj["size"]        = app.size;
+    QJsonArray cats, perms, screens;
+    for (const QString &c : app.categories)  cats.append(c);
+    for (const QString &p : app.permissions) perms.append(p);
+    for (const QString &s : app.screenshots) screens.append(s);
+    obj["categories"]  = cats;
+    obj["permissions"] = perms;
+    obj["screenshots"] = screens;
+    file.write(QJsonDocument(obj).toJson());
   }
   installedApps.insert(app.id, app);
+  saveInstalledIndex();
 }
+
+void StoreWindow::saveInstalledIndex() {
+  // Build the central installed.json at the primary install path root
+  QString indexPath = getPrimaryInstallPath() + "/installed.json";
+  QDir().mkpath(getPrimaryInstallPath());
+
+  QJsonArray arr;
+  for (const AppManifest &app : installedApps) {
+    QJsonObject obj;
+    obj["id"]         = app.id;
+    obj["version"]    = app.version;
+    obj["executable"] = app.executable;
+    arr.append(obj);
+  }
+
+  QFile indexFile(indexPath);
+  if (indexFile.open(QIODevice::WriteOnly)) {
+    indexFile.write(QJsonDocument(arr).toJson());
+  }
+}
+
+void StoreWindow::installDependency(QString dep) {
+  if (dep == "fuse") {
+    bool ok;
+    QString text = QInputDialog::getText(this, tr("Authentication Required"),
+                                         tr("Root privileges are required to install system dependencies.\nPlease enter your sudo password:"),
+                                         QLineEdit::Password,
+                                         "", &ok);
+    if (ok && !text.isEmpty()) {
+      QString pmCmd;
+      if (QFile::exists("/usr/bin/apt-get")) {
+          pmCmd = "apt-get update && apt-get install -y libfuse2 && ldconfig";
+      } else if (QFile::exists("/usr/bin/dnf")) {
+          pmCmd = "dnf install -y fuse && ldconfig";
+      } else if (QFile::exists("/usr/bin/pacman")) {
+          pmCmd = "pacman -Sy --noconfirm fuse2 && ldconfig";
+      } else {
+          pmCmd = "apt-get install -y libfuse2 && ldconfig"; // Fallback
+      }
+
+      QProcess *process = new QProcess(this);
+      process->start("sudo", QStringList() << "-S" << "sh" << "-c" << pmCmd);
+      process->write((text + "\n").toUtf8());
+      process->closeWriteChannel(); // Ensure EOF is sent to sudo
+
+      connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
+              [this, process](int exitCode) {
+                if (exitCode == 0) {
+                  webView->page()->runJavaScript("appInstalled('dep-fuse'); alert('FUSE installed successfully. You can now launch AppImages.');");
+                } else {
+                  webView->page()->runJavaScript("appInstallFailed('dep-fuse', 'Check password or internet.'); alert('Failed to install FUSE.');");
+                }
+                process->deleteLater();
+              });
+    } else {
+      webView->page()->runJavaScript("appInstallFailed('dep-fuse', 'Authentication cancelled.');");
+    }
+  }
+}
+

@@ -68,16 +68,19 @@ private slots:
 private:
     void loadLocalManifests();
     void saveLocalManifest(const AppManifest& app);
+    void saveInstalledIndex();
     QStringList getInstallPaths();
     QString getPrimaryInstallPath();
     QString getAppInstallDir(const QString& appId);
     void installApp(QString appId, QString targetPath = "");
     void uninstallApp(QString appId);
+    void launchApp(QString appId);
+    void installDependency(QString dep);
     
     QWebEngineView* webView;
     StoreWebPage* webPage;
     QNetworkAccessManager* networkManager;
-    QList<AppManifest> allStoreApps;
+    QMap<QString, AppManifest> allStoreApps;
     QMap<QString, AppManifest> installedApps;
     QMap<QString, QNetworkReply*> activeDownloads;
     int pendingRequests;

@@ -79,6 +79,7 @@ TitanStore_autogen/timestamp: CMakeFiles/TitanStore.dir/compiler_depend.ts
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/resources.qrc
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/background.png
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/Tiwut_universe_main_8454656.webm
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/index.html
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/icon.png
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /usr/lib/qt6/libexec/rcc
