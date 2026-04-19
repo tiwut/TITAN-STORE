@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Titan Store</title>
+    <style>
+        :root {
+            --bg-base: rgba(250, 250, 250, 0.4);
+            --bg-card: rgba(255, 255, 255, 0.6);
+            --bg-header: rgba(255, 255, 255, 0.7);
+            --text-main: #111111;
+            --text-muted: #444444;
+            --border: rgba(0, 0, 0, 0.1);
+            --accent: #3584e4;
+            --accent-hover: #1c71d8;
+            --destructive: #e01b24;
+            --destructive-hover: #c01c28;
+            --installed: #26a269;
+            --radius-lg: 12px;
+            --radius-md: 8px;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-base: rgba(30, 30, 30, 0.5);
+                --bg-card: rgba(45, 45, 45, 0.6);
+                --bg-header: rgba(40, 40, 40, 0.7);
+                --text-main: #ffffff;
+                --text-muted: #cccccc;
+                --border: rgba(255, 255, 255, 0.1);
+            }
+        }
+        body {
+            margin: 0;
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Ubuntu, sans-serif;
+            background-color: var(--bg-base);
+            background-image: url('background.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            user-select: none;
+            min-height: 100vh;
+        }
+        .header {
+            background-color: var(--bg-header);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+        .nav-links a {
+            padding: 6px 16px;
+            border-radius: calc(var(--radius-md) - 2px);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: 0.2s;
+        }
+        .nav-links a.active {
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            box-shadow: var(--shadow-sm);
+        }
+        .container {
+            padding: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+        .card img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-base);
+        }
+        .card-content {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 4px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-dev {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+        .status-badge {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: rgba(38, 162, 105, 0.1);
+            color: var(--installed);
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(53, 132, 228, 0.1);
+            color: var(--accent);
+            padding: 2px 6px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-right: 4px;
+            margin-top: 4px;
+        }
+        .perm-tag {
+            display: inline-block;
+            background: rgba(224, 27, 36, 0.1);
+            color: var(--destructive);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn:hover { background: var(--accent-hover); }
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .btn-installed { background: var(--bg-base); color: var(--installed); border: 1px solid var(--installed); }
+        .btn-destructive { background: var(--destructive); }
+        .btn-destructive:hover { background: var(--destructive-hover); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-main); }
+        .btn-outline:hover { background: var(--bg-card); border-color: var(--text-muted); }
+
+        .details-header {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        .details-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            object-fit: cover;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border);
+        }
+        .details-info { flex-grow: 1; }
+        .details-title { font-size: 32px; font-weight: 800; margin: 0 0 8px 0; letter-spacing: -0.5px; }
+        .details-meta { color: var(--text-muted); font-size: 14px; margin: 0 0 20px 0; }
+        .details-actions { display: flex; gap: 10px; align-items: center; }
+        
+        .gallery { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; }
+        .gallery img { height: 250px; border-radius: var(--radius-md); border: 1px solid var(--border); }
+        
+        .progress-container {
+            width: 200px;
+            display: none;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.2s ease;
+        }
+        .progress-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .settings-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        .settings-panel h3 { margin-top: 0; font-size: 18px; margin-bottom: 15px; }
+        .settings-panel p { color: var(--text-muted); font-size: 14px; margin-bottom: 10px; }
+        textarea {
+            width: 100%;
+            background: var(--bg-base);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-family: monospace;
+            box-sizing: border-box;
+            resize: vertical;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        textarea:focus { outline: none; border-color: var(--accent); }
+        
+        .settings-layout { display: flex; gap: 30px; }
+        .settings-sidebar { width: 200px; display: flex; flex-direction: column; gap: 5px; }
+        .settings-sidebar button {
+            background: transparent; border: none; text-align: left; padding: 10px 15px;
+            border-radius: var(--radius-md); color: var(--text-muted); cursor: pointer;
+            font-size: 14px; font-weight: 600; transition: 0.2s;
+        }
+        .settings-sidebar button:hover { background: rgba(0,0,0,0.05); }
+        .settings-sidebar button.active { background: var(--bg-card); color: var(--text-main); box-shadow: var(--shadow-sm); }
+        .settings-content { flex-grow: 1; }
+        .settings-section { display: none; animation: fadeIn 0.2s; }
+        .settings-section.active { display: block; }
+        
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--border); }
+        .toggle-row:last-child { border-bottom: none; }
+        .toggle-switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border); transition: .2s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .2s; border-radius: 50%; box-shadow: var(--shadow-sm); }
+        input:checked + .slider { background-color: var(--accent); }
+        input:checked + .slider:before { transform: translateX(20px); }
+        
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            width: 400px;
+            background: var(--bg-card);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 0;
+            animation: modalPop 0.2s ease-out;
+        }
+        @keyframes modalPop { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .path-select {
+            width: 100%;
+            background: var(--bg-base);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-title" style="position: absolute; left: 20px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            Titan Store
+        </div>
+        <div class="nav-links">
+            <a id="tab-store" class="active" onclick="switchView('store')">Explore</a>
+            <a id="tab-installed" onclick="switchView('installed')">Installed</a>
+            <a id="tab-settings" onclick="switchView('settings')">Preferences</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="view-store" class="view active">
+            <div id="store-grid" class="grid"><h3 style="color: var(--text-muted);">Loading Store...</h3></div>
+        </div>
+
+        <div id="view-installed" class="view">
+            <div id="installed-grid" class="grid"></div>
+        </div>
+
+        <div id="view-details" class="view">
+            <button class="btn btn-outline" onclick="switchView('store')" style="margin-bottom: 20px;">&larr; Back</button>
+            <div class="details-header">
+                <img id="det-icon" class="details-icon" src="" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIGR5PSIuM2VtIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD48L3N2Zz4=';">
+                <div class="details-info">
+                    <h1 id="det-title" class="details-title"></h1>
+                    <p id="det-meta" class="details-meta"></p>
+                    <div class="details-actions">
+                        <button id="det-btn-install" class="btn" onclick="installCurrentApp()">Install</button>
+                        <button id="det-btn-uninstall" class="btn btn-destructive" style="display:none;" onclick="uninstallCurrentApp()">Uninstall</button>
+                        
+                        <div id="det-progress" class="progress-container">
+                            <div class="progress-bar"><div id="det-progress-fill" class="progress-fill"></div></div>
+                            <div id="det-progress-text" class="progress-text">Downloading...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 40px;">About this app</h3>
+            <p id="det-desc" style="font-size: 15px; line-height: 1.6; color: var(--text-main); margin-bottom: 20px;"></p>
+            <div id="det-categories" style="margin-bottom: 20px;"></div>
+            <div id="det-permissions" style="margin-bottom: 40px;"></div>
+            
+            <div id="det-gallery" class="gallery"></div>
+        </div>
+
+        <div id="view-settings" class="view">
+            <div class="settings-layout">
+                <div class="settings-sidebar">
+                    <button class="settings-tab active" onclick="switchSettingsTab('general', event)">General</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('appearance', event)">Appearance</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('libraries', event)">Libraries</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('repositories', event)">Repositories</button>
+                </div>
+                
+                <div class="settings-content settings-panel">
+                    <div id="set-general" class="settings-section active">
+                        <h3>General</h3>
+                        <div class="toggle-row">
+                            <div>
+                                <h4 style="margin:0 0 5px 0;">Start Menu Shortcuts</h4>
+                                <p style="margin:0; font-size:13px; color:var(--text-muted);">Create a desktop shortcut when an app is installed</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="settings-shortcut" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="set-appearance" class="settings-section">
+                        <h3>Appearance</h3>
+                        <div class="toggle-row">
+                            <div>
+                                <h4 style="margin:0 0 5px 0;">Color Theme</h4>
+                                <p style="margin:0; font-size:13px; color:var(--text-muted);">Choose between light and dark mode</p>
+                            </div>
+                            <select id="settings-theme" class="path-select" style="width:150px;">
+                                <option value="system">System Default</option>
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div id="set-libraries" class="settings-section">
+                        <h3>Installation Libraries</h3>
+                        <p>Add library paths where apps will be installed (one per line). The first path is the default installation location.</p>
+                        <textarea id="settings-paths" style="height: 100px;"></textarea>
+                    </div>
+                    
+                    <div id="set-repositories" class="settings-section">
+                        <h3>Repositories</h3>
+                        <p>JSON URLs for Store Repositories (one per line):</p>
+                        <textarea id="settings-urls" style="height: 100px;"></textarea>
+                    </div>
+                    
+                    <div style="margin-top: 20px; text-align: right;">
+                        <button class="btn" onclick="saveSettings()">Apply Changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="install-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content settings-panel">
+            <h3>Choose Install Location</h3>
+            <p>Select a library path to install the app into:</p>
+            <select id="install-path-select" class="path-select"></select>
+            <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: flex-end;">
+                <button class="btn btn-outline" onclick="closeInstallModal()">Cancel</button>
+                <button class="btn" onclick="confirmInstall()">Install</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentAppId = "";
+        let globalApps = [];
+        let globalInstalled = [];
+        let globalInstallPaths = [];
+
+        function switchSettingsTab(tabName, event) {
+            document.querySelectorAll('.settings-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.settings-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('set-' + tabName).classList.add('active');
+            if(event) event.target.classList.add('active');
+        }
+
+        function switchView(viewName) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+            
+            document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+            if(document.getElementById('tab-' + viewName)) {
+                document.getElementById('tab-' + viewName).classList.add('active');
+            }
+            if(viewName === 'store') renderStore(globalApps, globalInstalled);
+        }
+
+        function renderStore(apps, instIds) {
+            globalApps = apps;
+            globalInstalled = instIds;
+            
+            let storeHtml = "";
+            let installedHtml = "";
+
+            apps.forEach(app => {
+                const img = app.icon ? app.icon : (app.screenshots && app.screenshots.length > 0 ? app.screenshots[0] : "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMjUwIDE0MCI+PHJlY3Qgd2lkdGg9IjI1MCIgaGVpZ2h0PSIxNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2NjYiIGR5PSIuM2VtIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD48L3N2Zz4=");
+                const isInst = instIds.includes(app.id);
+                const badge = isInst ? "<div class='status-badge'>Installed</div>" : "";
+                
+                let catsHtml = "";
+                if(app.categories) {
+                    app.categories.slice(0, 2).forEach(c => catsHtml += `<span class="tag">${c}</span>`);
+                }
+                
+                const card = `
+                    <div class="card" onclick="openDetails('${app.id}')">
+                        <img src="${img}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMjUwIDE0MCI+PHJlY3Qgd2lkdGg9IjI1MCIgaGVpZ2h0PSIxNDAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2NjYiIGR5PSIuM2VtIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD48L3N2Zz4=';">
+                        <div class="card-content">
+                            <p class="card-title">${app.title}</p>
+                            <p class="card-dev">${app.developer}</p>
+                            <div>${catsHtml}</div>
+                            ${badge}
+                        </div>
+                    </div>`;
+                
+                storeHtml += card;
+                if(isInst) installedHtml += card;
+            });
+
+            document.getElementById('store-grid').innerHTML = storeHtml || "<h3 style='color: var(--text-muted);'>No apps found in sources.</h3>";
+            document.getElementById('installed-grid').innerHTML = installedHtml || "<h3 style='color: var(--text-muted);'>No apps installed yet.</h3>";
+        }
+
+        function loadSettings(settingsObj) {
+            globalInstallPaths = settingsObj.installPaths;
+            document.getElementById('settings-urls').value = settingsObj.urls.join("\n");
+            document.getElementById('settings-paths').value = settingsObj.installPaths.join("\n");
+            if(settingsObj.createShortcut !== undefined) document.getElementById('settings-shortcut').checked = settingsObj.createShortcut;
+            if(settingsObj.theme !== undefined) {
+                document.getElementById('settings-theme').value = settingsObj.theme;
+                applyTheme(settingsObj.theme);
+            }
+        }
+        
+        function applyTheme(theme) {
+            if(theme === 'dark') {
+                document.documentElement.style.setProperty('--bg-base', '#242424');
+                document.documentElement.style.setProperty('--bg-card', '#303030');
+                document.documentElement.style.setProperty('--bg-header', '#2b2b2b');
+                document.documentElement.style.setProperty('--text-main', '#ffffff');
+                document.documentElement.style.setProperty('--text-muted', '#9a9a9a');
+                document.documentElement.style.setProperty('--border', '#444444');
+            } else if (theme === 'light') {
+                document.documentElement.style.setProperty('--bg-base', '#fafafa');
+                document.documentElement.style.setProperty('--bg-card', '#ffffff');
+                document.documentElement.style.setProperty('--bg-header', '#ffffff');
+                document.documentElement.style.setProperty('--text-main', '#111111');
+                document.documentElement.style.setProperty('--text-muted', '#666666');
+                document.documentElement.style.setProperty('--border', '#e0e0e0');
+            } else {
+                document.documentElement.removeAttribute('style');
+            }
+        }
+
+        function showAppDetails(app, isInstalled) {
+            currentAppId = app.id;
+            
+            const iconUrl = app.icon ? app.icon : (app.screenshots && app.screenshots.length > 0 ? app.screenshots[0] : "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PHJlY3Qgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNlMGUwZTAiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9InNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM2NjYiIGR5PSIuM2VtIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD48L3N2Zz4=");
+            document.getElementById('det-icon').src = iconUrl;
+            document.getElementById('det-title').innerText = app.title;
+            document.getElementById('det-meta').innerText = `Version ${app.version} • ${app.developer} • ${app.size}`;
+            document.getElementById('det-desc').innerText = app.description;
+            
+            let catHtml = "";
+            if(app.categories && app.categories.length > 0) {
+                app.categories.forEach(c => catHtml += `<span class="tag">${c}</span>`);
+            }
+            document.getElementById('det-categories').innerHTML = catHtml;
+            
+            let permHtml = "";
+            if(app.permissions && app.permissions.length > 0) {
+                permHtml += `<p style="margin: 0 0 5px 0; font-size: 13px; font-weight: bold;">System Permissions required:</p>`;
+                app.permissions.forEach(p => permHtml += `<span class="perm-tag">${p}</span>`);
+            }
+            document.getElementById('det-permissions').innerHTML = permHtml;
+            
+            const btnInst = document.getElementById('det-btn-install');
+            const btnUninst = document.getElementById('det-btn-uninstall');
+            const progCont = document.getElementById('det-progress');
+            
+            progCont.style.display = 'none';
+            btnInst.disabled = false;
+            
+            if(isInstalled) {
+                btnInst.innerText = "Open";
+                btnInst.classList.add('btn-installed');
+                btnUninst.style.display = 'inline-block';
+            } else {
+                btnInst.innerText = "Install";
+                btnInst.classList.remove('btn-installed');
+                btnUninst.style.display = 'none';
+            }
+
+            let screens = "";
+            if(app.screenshots) {
+                app.screenshots.forEach(img => { screens += `<img src="${img}">`; });
+            }
+            document.getElementById('det-gallery').innerHTML = screens;
+
+            switchView('details');
+        }
+
+        function openDetails(appId) {
+            window.location.href = "app://details?data=" + encodeURIComponent(appId);
+        }
+
+        function installCurrentApp() {
+            if(globalInstalled.includes(currentAppId)) {
+                alert("Launch app feature not implemented yet.");
+                return;
+            }
+            
+            const select = document.getElementById('install-path-select');
+            select.innerHTML = '';
+            if (!globalInstallPaths || globalInstallPaths.length === 0) {
+                globalInstallPaths = ["/home/user/.local/share/TITAN_STORE/apps"];
+            }
+            globalInstallPaths.forEach(path => {
+                const opt = document.createElement('option');
+                opt.value = path;
+                opt.innerText = path;
+                select.appendChild(opt);
+            });
+            
+            document.getElementById('install-modal').style.display = 'flex';
+        }
+
+        function closeInstallModal() {
+            document.getElementById('install-modal').style.display = 'none';
+        }
+
+        function confirmInstall() {
+            closeInstallModal();
+            const chosenPath = document.getElementById('install-path-select').value;
+            const payload = JSON.stringify({ id: currentAppId, path: chosenPath });
+            window.location.href = "app://install?data=" + encodeURIComponent(payload);
+            
+            document.getElementById('det-btn-install').disabled = true;
+            document.getElementById('det-progress').style.display = 'block';
+            document.getElementById('det-progress-fill').style.width = '0%';
+            document.getElementById('det-progress-text').innerText = 'Starting download...';
+        }
+
+        function uninstallCurrentApp() {
+            if(confirm("Are you sure you want to uninstall this app?")) {
+                window.location.href = "app://uninstall?data=" + encodeURIComponent(currentAppId);
+            }
+        }
+
+        function updateProgress(appId, progress) {
+            if(currentAppId === appId) {
+                if(progress === 'processing') {
+                    document.getElementById('det-progress-fill').style.width = '100%';
+                    document.getElementById('det-progress-text').innerText = 'Installing...';
+                } else {
+                    document.getElementById('det-progress-fill').style.width = progress + '%';
+                    document.getElementById('det-progress-text').innerText = progress + '% downloaded';
+                }
+            }
+        }
+
+        function appInstalled(appId) {
+            if(currentAppId === appId && document.getElementById('view-details').style.display === 'block') {
+                openDetails(appId);
+            }
+        }
+
+        function appInstallFailed(appId, reason) {
+            if(currentAppId === appId) {
+                document.getElementById('det-progress').style.display = 'none';
+                document.getElementById('det-btn-install').disabled = false;
+                alert("Installation failed: " + reason);
+            }
+        }
+
+        function appUninstalled(appId) {
+            if(currentAppId === appId) {
+                openDetails(appId); // Refresh details view
+            }
+        }
+
+        function saveSettings() {
+            const urlsText = document.getElementById('settings-urls').value;
+            const pathsText = document.getElementById('settings-paths').value;
+            const shortcut = document.getElementById('settings-shortcut').checked;
+            const theme = document.getElementById('settings-theme').value;
+            const payload = JSON.stringify({ 
+                urls: urlsText, 
+                paths: pathsText,
+                createShortcut: shortcut,
+                theme: theme
+            });
+            window.location.href = "app://saveSettings?data=" + encodeURIComponent(payload);
+            
+            switchView('store');
+            document.getElementById('store-grid').innerHTML = "<h3 style='color: var(--text-muted);'>Reloading Store...</h3>";
+        }
+    </script>
+</body>
+</html>
