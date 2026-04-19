@@ -21,7 +21,6 @@ TITAN STORE is designed to be a decentralized application hub. You can add your 
 - **Isolated Sandbox**: Apps are installed in individual sub-folders to keep your system clean.
 - **Version Control**: Built-in logic to detect updates based on manifest IDs and versions.
 - **Customizable Environment**: Change your installation paths and sources on the fly.
-- 
 ---
 
 ## License
