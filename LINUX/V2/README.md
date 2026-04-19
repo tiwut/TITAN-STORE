@@ -2,8 +2,6 @@
 
 Titan Store is a sleek, modern, and open-source application store for Linux. Built with C++ (Qt6) and WebEngine, it features a stunning glassmorphism UI and a robust, automated application package manager.
 
-![Titan Store Icon](icon.png)
-
 ## Features
 - **Glassmorphism Design:** A beautiful, responsive interface built with HTML/CSS inside Qt WebEngine.
 - **Native App Packages:** Downloads and extracts `.tar.gz` app packages seamlessly.
