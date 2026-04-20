@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC
+CMAKE_SOURCE_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build
+CMAKE_BINARY_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/TitanStore.dir/depend.make
@@ -72,20 +72,20 @@ include CMakeFiles/TitanStore.dir/flags.make
 TitanStore_autogen/timestamp: /usr/lib/qt6/libexec/moc
 TitanStore_autogen/timestamp: /usr/lib/qt6/libexec/uic
 TitanStore_autogen/timestamp: CMakeFiles/TitanStore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target TitanStore"
-	/usr/bin/cmake -E cmake_autogen /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target TitanStore"
+	/usr/bin/cmake -E cmake_autogen /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E touch /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/timestamp
 
-TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/resources.qrc
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/resources.qrc
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json
-TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/background.png
-TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/Tiwut_universe_main_8454656.webm
-TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/index.html
-TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/icon.png
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/background.png
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/Tiwut_universe_main_8454656.webm
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/index.html
+TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/icon.png
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /usr/lib/qt6/libexec/rcc
 TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp: /usr/lib/qt6/libexec/rcc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for resources.qrc"
-	/usr/bin/cmake -E cmake_autorcc /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json 
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for resources.qrc"
+	/usr/bin/cmake -E cmake_autorcc /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json 
 
 CMakeFiles/TitanStore.dir/codegen:
 .PHONY : CMakeFiles/TitanStore.dir/codegen
@@ -93,58 +93,58 @@ CMakeFiles/TitanStore.dir/codegen:
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o: CMakeFiles/TitanStore.dir/flags.make
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o: TitanStore_autogen/mocs_compilation.cpp
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o: CMakeFiles/TitanStore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o -MF CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o -c /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o -MF CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o -c /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp
 
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp > CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp > CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.i
 
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp -o CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp -o CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.s
 
 CMakeFiles/TitanStore.dir/main.cpp.o: CMakeFiles/TitanStore.dir/flags.make
-CMakeFiles/TitanStore.dir/main.cpp.o: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/main.cpp
+CMakeFiles/TitanStore.dir/main.cpp.o: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/main.cpp
 CMakeFiles/TitanStore.dir/main.cpp.o: CMakeFiles/TitanStore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TitanStore.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/main.cpp.o -MF CMakeFiles/TitanStore.dir/main.cpp.o.d -o CMakeFiles/TitanStore.dir/main.cpp.o -c /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/TitanStore.dir/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/main.cpp.o -MF CMakeFiles/TitanStore.dir/main.cpp.o.d -o CMakeFiles/TitanStore.dir/main.cpp.o -c /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/main.cpp
 
 CMakeFiles/TitanStore.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TitanStore.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/main.cpp > CMakeFiles/TitanStore.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/main.cpp > CMakeFiles/TitanStore.dir/main.cpp.i
 
 CMakeFiles/TitanStore.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TitanStore.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/main.cpp -o CMakeFiles/TitanStore.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/main.cpp -o CMakeFiles/TitanStore.dir/main.cpp.s
 
 CMakeFiles/TitanStore.dir/StoreWindow.cpp.o: CMakeFiles/TitanStore.dir/flags.make
-CMakeFiles/TitanStore.dir/StoreWindow.cpp.o: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp
+CMakeFiles/TitanStore.dir/StoreWindow.cpp.o: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp
 CMakeFiles/TitanStore.dir/StoreWindow.cpp.o: CMakeFiles/TitanStore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TitanStore.dir/StoreWindow.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/StoreWindow.cpp.o -MF CMakeFiles/TitanStore.dir/StoreWindow.cpp.o.d -o CMakeFiles/TitanStore.dir/StoreWindow.cpp.o -c /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/TitanStore.dir/StoreWindow.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/StoreWindow.cpp.o -MF CMakeFiles/TitanStore.dir/StoreWindow.cpp.o.d -o CMakeFiles/TitanStore.dir/StoreWindow.cpp.o -c /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp
 
 CMakeFiles/TitanStore.dir/StoreWindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TitanStore.dir/StoreWindow.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp > CMakeFiles/TitanStore.dir/StoreWindow.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp > CMakeFiles/TitanStore.dir/StoreWindow.cpp.i
 
 CMakeFiles/TitanStore.dir/StoreWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TitanStore.dir/StoreWindow.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp -o CMakeFiles/TitanStore.dir/StoreWindow.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/StoreWindow.cpp -o CMakeFiles/TitanStore.dir/StoreWindow.cpp.s
 
 CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/TitanStore.dir/flags.make
 CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o: TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp
 CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o: CMakeFiles/TitanStore.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o -MF CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o.d -o CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o -MF CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o.d -o CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp
 
 CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp > CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp > CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.i
 
 CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp -o CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp -o CMakeFiles/TitanStore.dir/TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp.s
 
 # Object files for target TitanStore
 TitanStore_OBJECTS = \
@@ -180,7 +180,7 @@ TitanStore: /usr/lib/x86_64-linux-gnu/libQt6Qml.so.6.8.2
 TitanStore: /usr/lib/x86_64-linux-gnu/libQt6Network.so.6.8.2
 TitanStore: /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.8.2
 TitanStore: CMakeFiles/TitanStore.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable TitanStore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable TitanStore"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TitanStore.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -193,6 +193,6 @@ CMakeFiles/TitanStore.dir/clean:
 
 CMakeFiles/TitanStore.dir/depend: TitanStore_autogen/EWIEGA46WW/qrc_resources.cpp
 CMakeFiles/TitanStore.dir/depend: TitanStore_autogen/timestamp
-	cd /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/TitanStore.dir/depend
 

@@ -552,6 +552,21 @@
             border-radius: var(--radius-md);
             font-size: 14px;
         }
+        details {
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        summary {
+          font-weight: bold;
+          outline: none;
+        }
+
+        details[open] {
+          background-color: #005cf0;
+        }
     </style>
 </head>
 
@@ -564,12 +579,7 @@
 
     <div class="header">
         <div class="header-title" style="position: absolute; left: 20px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
+            <img src="icon.png" alt="Logo" style="width: 24px; height: 24px; vertical-align: middle;">
             Titan Store
         </div>
         <div class="nav-links">
@@ -588,7 +598,7 @@
                 </div>
             </div>
             <div id="store-grid" class="grid">
-                <h3 style="color: var(--text-muted);">Loading Store...</h3>
+                <h3 style="color: var(--text-muted);">Loading...</h3>
             </div>
         </div>
 
@@ -639,6 +649,7 @@
                         onclick="switchSettingsTab('repositories', event)">Repositories</button>
                     <button class="settings-tab"
                         onclick="switchSettingsTab('dependencies', event)">Dependencies</button>
+                    <button class="settings-tab" onclick="switchSettingsTab('about', event)">About</button>
                 </div>
 
                 <div class="settings-content settings-panel">
@@ -697,6 +708,19 @@
                             </div>
                             <button class="btn" onclick="installDependency('fuse')">Install FUSE</button>
                         </div>
+                    </div>
+                    <div id="set-about" class="settings-section">
+                        <h3>About Titan Store</h3>
+                        <p>Titan Store is a sleek, modern, and open-source application store for Linux. Built with C++ (Qt6) and WebEngine, it features a stunning glassmorphism UI and a robust, automated application package manager.</p>
+                        <p>Version: 2</p>
+                        <p>Project: Tiwut Project & Titan Project</p>
+                        <details>
+                          <summary>License - GNU General Public License v3.0</summary>
+                          <iframe src="https://tiwut.org/tl/License/Titan-Store/LICENSE.txt" width="100%" height="500px"></iframe>
+                        </details>
+                        <p>Developer: Tiwut</p>
+                        <p>GitHub: github.com/tiwut/TITAN-STORE</p>
+                        <p>GitHub Repository: github.com/tiwut/TITAN-STORE-Repository</p>
                     </div>
 
                     <div style="margin-top: 20px; text-align: right;">

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC
+CMAKE_SOURCE_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build
+CMAKE_BINARY_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build
 
 # Utility rule file for TitanStore_autogen.
 
@@ -71,9 +71,9 @@ CMakeFiles/TitanStore_autogen: TitanStore_autogen/timestamp
 TitanStore_autogen/timestamp: /usr/lib/qt6/libexec/moc
 TitanStore_autogen/timestamp: /usr/lib/qt6/libexec/uic
 TitanStore_autogen/timestamp: CMakeFiles/TitanStore_autogen.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target TitanStore"
-	/usr/bin/cmake -E cmake_autogen /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutogenInfo.json ""
-	/usr/bin/cmake -E touch /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/timestamp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target TitanStore"
+	/usr/bin/cmake -E cmake_autogen /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutogenInfo.json ""
+	/usr/bin/cmake -E touch /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/timestamp
 
 CMakeFiles/TitanStore_autogen.dir/codegen:
 .PHONY : CMakeFiles/TitanStore_autogen.dir/codegen
@@ -92,6 +92,6 @@ CMakeFiles/TitanStore_autogen.dir/clean:
 .PHONY : CMakeFiles/TitanStore_autogen.dir/clean
 
 CMakeFiles/TitanStore_autogen.dir/depend:
-	cd /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/TitanStore_autogen.dir/depend
 

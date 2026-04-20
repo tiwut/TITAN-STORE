@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC
+CMAKE_SOURCE_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build
+CMAKE_BINARY_DIR = /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build
 
 # Utility rule file for TitanStore_autogen_timestamp_deps.
 
@@ -81,6 +81,6 @@ CMakeFiles/TitanStore_autogen_timestamp_deps.dir/clean:
 .PHONY : CMakeFiles/TitanStore_autogen_timestamp_deps.dir/clean
 
 CMakeFiles/TitanStore_autogen_timestamp_deps.dir/depend:
-	cd /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen_timestamp_deps.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/TitanStore_autogen_timestamp_deps.dir/depend
 

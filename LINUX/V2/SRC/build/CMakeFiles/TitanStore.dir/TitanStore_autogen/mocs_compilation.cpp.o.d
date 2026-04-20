@@ -1,8 +1,8 @@
 CMakeFiles/TitanStore.dir/TitanStore_autogen/mocs_compilation.cpp.o: \
- /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp \
+ /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/moc_StoreWindow.cpp \
- /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/../../../StoreWindow.h \
+ /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/moc_StoreWindow.cpp \
+ /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/../../../StoreWindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QMainWindow \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qmainwindow.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtwidgetsglobal.h \

@@ -1,5 +1,5 @@
-/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/moc_StoreWindow.cpp: /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/StoreWindow.h \
-  /home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/moc_predefs.h \
+/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/EWIEGA46WW/moc_StoreWindow.cpp: /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/StoreWindow.h \
+  /home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/moc_predefs.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/bitsperlong.h \
   /usr/include/asm-generic/errno-base.h \

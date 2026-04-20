@@ -1,28 +1,28 @@
 {
-	"BUILD_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen",
-	"CMAKE_BINARY_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build",
-	"CMAKE_CURRENT_BINARY_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build",
-	"CMAKE_CURRENT_SOURCE_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC",
-	"CMAKE_SOURCE_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC",
+	"BUILD_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen",
+	"CMAKE_BINARY_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC",
+	"CMAKE_SOURCE_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC",
 	"CROSS_CONFIG" : false,
 	"GENERATOR" : "Unix Makefiles",
-	"INCLUDE_DIR" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/include",
+	"INCLUDE_DIR" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/TitanStore_autogen/include",
 	"INPUTS" : 
 	[
-		"/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/background.png",
-		"/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/Tiwut_universe_main_8454656.webm",
-		"/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/index.html",
-		"/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/icon.png"
+		"/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/background.png",
+		"/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/Tiwut_universe_main_8454656.webm",
+		"/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/index.html",
+		"/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/icon.png"
 	],
-	"LOCK_FILE" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"LOCK_FILE" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
 	"MULTI_CONFIG" : false,
 	"OPTIONS" : [ "-name", "resources" ],
 	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
 	"OUTPUT_NAME" : "qrc_resources.cpp",
 	"RCC_EXECUTABLE" : "/usr/lib/qt6/libexec/rcc",
 	"RCC_LIST_OPTIONS" : [ "--list" ],
-	"SETTINGS_FILE" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
-	"SOURCE" : "/home/tiwut/Documents/Dev/TITAN-STORE/LINUX/V2/SRC/resources.qrc",
+	"SETTINGS_FILE" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/build/CMakeFiles/TitanStore_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/tiwut/Documents/GitHub/TITAN-STORE/LINUX/V2/SRC/resources.qrc",
 	"USE_BETTER_GRAPH" : true,
 	"VERBOSITY" : 0
 }
