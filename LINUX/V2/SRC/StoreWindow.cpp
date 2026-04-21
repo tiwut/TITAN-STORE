@@ -164,8 +164,6 @@ void StoreWindow::sendDataToHtml() {
     appsArray.append(obj);
   }
 
-  // Include installed apps whose repository was removed ("orphaned").
-  // These use the full metadata cached in their local manifest.json.
   for (const AppManifest &app : installedApps) {
     if (!allStoreApps.contains(app.id)) {
       QJsonObject obj;
@@ -205,7 +203,6 @@ void StoreWindow::handleWebAction(QString action, QString payload) {
     if (allStoreApps.contains(payload)) {
       selectedApp = allStoreApps.value(payload);
     } else if (installedApps.contains(payload)) {
-      // Orphaned app: use full metadata cached in local manifest.json
       selectedApp = installedApps.value(payload);
       if (selectedApp.title.isEmpty()) selectedApp.title = selectedApp.id;
       if (selectedApp.description.isEmpty())
@@ -514,7 +511,6 @@ void StoreWindow::loadLocalManifests() {
     }
   }
 
-  // After scanning, write/refresh the central installed.json index
   saveInstalledIndex();
 }
 
@@ -523,11 +519,9 @@ void StoreWindow::saveLocalManifest(const AppManifest &app) {
   QFile file(installDir + "/manifest.json");
   if (file.open(QIODevice::WriteOnly)) {
     QJsonObject obj;
-    // Core fields
     obj["id"]          = app.id;
     obj["version"]     = app.version;
     obj["executable"]  = app.executable;
-    // Cached repository metadata for offline/orphaned display
     obj["title"]       = app.title;
     obj["developer"]   = app.developer;
     obj["description"] = app.description;
@@ -548,7 +542,6 @@ void StoreWindow::saveLocalManifest(const AppManifest &app) {
 }
 
 void StoreWindow::saveInstalledIndex() {
-  // Build the central installed.json at the primary install path root
   QString indexPath = getPrimaryInstallPath() + "/installed.json";
   QDir().mkpath(getPrimaryInstallPath());
 
@@ -583,13 +576,13 @@ void StoreWindow::installDependency(QString dep) {
       } else if (QFile::exists("/usr/bin/pacman")) {
           pmCmd = "pacman -Sy --noconfirm fuse2 && ldconfig";
       } else {
-          pmCmd = "apt-get install -y libfuse2 && ldconfig"; // Fallback
+          pmCmd = "apt-get install -y libfuse2 && ldconfig";
       }
 
       QProcess *process = new QProcess(this);
       process->start("sudo", QStringList() << "-S" << "sh" << "-c" << pmCmd);
       process->write((text + "\n").toUtf8());
-      process->closeWriteChannel(); // Ensure EOF is sent to sudo
+      process->closeWriteChannel();
 
       connect(process, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished),
               [this, process](int exitCode) {
