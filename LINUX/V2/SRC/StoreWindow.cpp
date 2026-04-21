@@ -450,7 +450,6 @@ void StoreWindow::launchApp(QString appId) {
     program = execPath;
   }
 
-  // Ensure the file is executable
   QFile::setPermissions(execPath, QFile::ReadOwner | QFile::WriteOwner | QFile::ExeOwner |
                                   QFile::ReadGroup | QFile::ExeGroup |
                                   QFile::ReadOther | QFile::ExeOther);
