@@ -1,5 +1,7 @@
 # TITAN STORE
 
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey)
+
 **TITAN STORE** is a cross-platform App Store and Launcher built with **C++17** and **Qt6**. It features a modern **Glass UI** (powered by Chromium/WebEngine) that offers a high-end desktop experience with real-time blur and transparency effects.
 
 TITAN STORE is designed to be a decentralized application hub. You can add your own JSON repositories, and the store will handle isolated installations and version tracking across multiple operating systems.
